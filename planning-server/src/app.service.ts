@@ -2,8 +2,7 @@ import { Injectable } from '@nestjs/common';
 import axios, { AxiosError, AxiosResponse } from 'axios';
 
 const clientId = 'planning-service';
-// const clientSecret = '0WBDENANBIRSXXRgjcZuVbP4XnWpVT3Y';
-const clientSecret = 'REPLACE_WITH_THE_APPLICATION_CLIENT_SECRET';
+const clientSecret = '0WBDENANBIRSXXRgjcZuVbP4XnWpVT3Y';
 const keycloakUrl = 'http://keycloak:8080';
 
 @Injectable()
@@ -26,7 +25,7 @@ export class AppService {
     let response;
     try {
       response = await axios.post(
-        `${keycloakUrl}/realms/routific/protocol/openid-connect/token`,
+        `${keycloakUrl}/realms/myrealm/protocol/openid-connect/token`,
         params,
         {
           headers: {

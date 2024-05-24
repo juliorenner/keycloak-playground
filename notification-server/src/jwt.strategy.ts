@@ -14,10 +14,10 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
         cache: true,
         rateLimit: true,
         jwksRequestsPerMinute: 5,
-        jwksUri: `${keycloakUrl}/realms/routific/protocol/openid-connect/certs`,
+        jwksUri: `${keycloakUrl}/realms/myrealm/protocol/openid-connect/certs`,
       }),
       // audience: keycloakClientId,
-      issuer: `http://keycloak:8080/realms/routific`,
+      issuer: `http://keycloak:8080/realms/myrealm`,
       algorithms: ['RS256'],
     });
   }

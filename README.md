@@ -14,7 +14,7 @@ Each microservices will be registered as a client.
 
 ## Service to Service authentication using Client Credentials Flow
 
-1. Create a new Realm in KeyCloak named `routific`.
+1. Create a new Realm in KeyCloak named `myrealm`.
 1. Check how to configure a client application [here](https://www.youtube.com/watch?v=hGatG58RrOo). Configure a KeyCloak client.
 1. Update the planning-service app client secret
 1. Do an API request to planning-service in the endpoint `/`.
