@@ -1,0 +1,50 @@
+version: "3.8"
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: postgres-keycloak
+    hostname: postgres-keycloak
+    ports:
+      - 5432:5432
+    volumes:
+      - keycloak_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=keycloak
+      - POSTGRES_USER=keycloak
+      - POSTGRES_PASSWORD=password
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:latest
+    command: start-dev
+    container_name: keycloak
+    hostname: keycloak
+    environment:
+      - KEYCLOAK_ADMIN=admin
+      - KEYCLOAK_ADMIN_PASSWORD=admin
+      - KC_DB=postgres
+      - KC_DB_URL_HOST=postgres-keycloak:5432/keycloak?user=keycloak&password=password&ssl=true
+    depends_on:
+      - postgres
+    ports:
+      - 8080:8080
+  
+  notification-server:
+    hostname: notification-server
+    container_name: notification-server
+    build:
+      context: ./notification-server
+    ports:
+      - 3001:3001
+  
+  planning-server:
+    hostname: planning-server
+    container_name: planning-server
+    build:
+      context: ./planning-server
+    ports:
+      - 3000:3000
+
+
+volumes:
+  keycloak_data:
