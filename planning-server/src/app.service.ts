@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import axios, { AxiosError, AxiosResponse } from 'axios';
 
 const clientId = 'planning-service';
-const clientSecret = '0WBDENANBIRSXXRgjcZuVbP4XnWpVT3Y';
+const clientSecret = process.env.KC_CLIENT_SECRET;
 const keycloakUrl = 'http://keycloak:8080';
 
 @Injectable()

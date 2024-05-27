@@ -12,6 +12,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
       secretOrKeyProvider: passportJwtSecret({
         cache: true,
+        cacheMaxAge: 10 * 60 * 1000, // caches the token for 10 minutes
         rateLimit: true,
         jwksRequestsPerMinute: 5,
         jwksUri: `${keycloakUrl}/realms/myrealm/protocol/openid-connect/certs`,
