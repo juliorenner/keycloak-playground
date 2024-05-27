@@ -40,6 +40,7 @@ services:
   planning-server:
     hostname: planning-server
     container_name: planning-server
+    env_file: ./planning-server/.env
     build:
       context: ./planning-server
     ports:
